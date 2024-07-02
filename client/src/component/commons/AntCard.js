@@ -1,5 +1,6 @@
 import React from "react";
 import { Col, Card } from "antd";
+import { Link } from "react-router-dom";
 
 const AntCard = (props) => {
   const { Meta } = Card;
@@ -9,8 +10,8 @@ const AntCard = (props) => {
     return (
       <Col lg={4} md={6} sm={12} xs={24}>
         <div>
-          <a href={`/movie/${props.movieId}`}>
-            <Card
+          <Link to={`/detail/${props.movieId}`}>
+          <Card
               hoverable
               style={{ width: '100%' }}
               cover={<img src={props.path} alt={props.title} />}
@@ -19,7 +20,10 @@ const AntCard = (props) => {
                 title={props.title}
               />
             </Card>
-          </a>
+          </Link>
+          {/* <a href={`/movie/${props.movieId}`}> */}
+            
+          {/* </a> */}
         </div>
       </Col>
     );

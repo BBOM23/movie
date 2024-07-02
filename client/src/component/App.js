@@ -14,7 +14,7 @@ function App() {
         <Router basename={process.env.PUBLIC_URL}>
           <Routes>
             <Route path="/" element={<LandingPage />} />
-            <Route path="/movie/:movieId" element={<Detail />} />
+            <Route path="/detail/:movieId" element={<Detail />} />
             <Route path="/items" element={<Items />} />
           </Routes>
         </Router>

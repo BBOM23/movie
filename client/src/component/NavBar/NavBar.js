@@ -14,7 +14,7 @@ const { Header } = Layout;
 
 const items = [{
   key: 'Home',
-  label: (<a href="/"> Home </a>)
+  label: (<a href="/movie"> Home </a>)
 }]
 
 const NavBar = () => {

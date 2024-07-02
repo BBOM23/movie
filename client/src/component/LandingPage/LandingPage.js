@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { API_KEY, API_URL, IMAGE_BASE_URL } from "../Config";
 import AntCard from "../commons/AntCard";
 import MainImage from "./Section/MainImage";
+import axios from "axios";
 
 function LandingPage() {
   const navigate = useNavigate();
@@ -13,20 +14,16 @@ function LandingPage() {
 
   useEffect(() => {
     const page = 1;
-    fetchMovies(page);
+    axiosMovies(page);
   }, []);
 
   const loadMoreItems = () => {
     console.log("더보기 버튼 클릭!");
-    fetchMovies(CurrentPage + 1);
+    axiosMovies(CurrentPage + 1);
   };
 
   return (
     <>
-      <div>
-        <Link to="/items">items 이동</Link> &nbsp;&nbsp;
-        <a href="/items">[a 태그] Items로 이동</a>
-      </div>
       <div style={{ width: "100%" }}>
         {/* Main Image */}
         {MainMovieImage && (
@@ -76,11 +73,11 @@ function LandingPage() {
     </>
   );
 
-  function fetchMovies(page) {
+  function axiosMovies(page) {
     const endpoint = `${API_URL}popular?api_key=${API_KEY}&language=en-US&page=${page}`;
 
-    fetch(endpoint)
-      .then((response) => response.json())
+    axios(endpoint)
+      .then((response) => response.data)
       .then((response) => {
         // console.log(response.page);
         // console.log(response.results);
